@@ -1,0 +1,27 @@
+body {
+    background-color: antiquewhite;
+}
+
+h1 {
+    text-align: center;
+}
+
+#parent {
+    display: flex;
+    visibility: visible;
+    align-items: center;
+    justify-content: center;
+}
+
+#bigBlock {
+    display: flex;
+    flex-direction: column;
+}
+
+#block {
+    width: 40px;
+    height: 40px;
+    margin: 2px;
+    background-color: white;
+    visibility: visible;
+}
