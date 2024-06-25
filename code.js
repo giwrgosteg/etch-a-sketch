@@ -1,22 +1,10 @@
-for (let i = 0; i < 16; i++) {
-    const bigDivo = document.createElement("div");
-    bigDivo.id = "bigBlock";
-    bigDivo.classList.add("container");
-    for (let j = 0; j < 16; j++) {
-        const divo = document.createElement("div");
-
-        divo.id = "block";
-        divo.classList.add("sketch");
-        bigDivo.appendChild(divo);
-    }
-    document.getElementById("parent").appendChild(bigDivo);
-}
-
+let sixteenXsixteen = true;
 let elements = document.querySelectorAll("div.sketch");
 let containers = document.querySelectorAll("div.container");
 
 function colorChange() {
-    this.style.backgroundColor = "grey";
+    this.style.backgroundColor = "black";
+    this.style.opacity = 0.1;
 }
 
 function colorReset(element) {
@@ -24,7 +12,14 @@ function colorReset(element) {
 }
 
 function rescaleSize() {
-    let size = window.prompt("Give a size: ");
+    let size;
+    if (sixteenXsixteen == true) {
+        size = 16;
+        sixteenXsixteen = false;
+    }
+    else {
+        size = window.prompt("Give a size: ");
+    }
     if (size <= 100){
         for (let i = 0; i < elements.length; i++) {
             elements[i].remove();
@@ -58,7 +53,10 @@ function rescaleSize() {
 }
 
 for (let i = 0; i < elements.length; i++){
-    elements[i].addEventListener("mouseover", colorChange)
+    elements[i].addEventListener("mouseover", function() { 
+        this.style.backgroundColor = "black";
+        this.style.opacity += 0.1;
+    })
 }
 
 document.getElementById("reset").onclick = function() {
@@ -68,3 +66,5 @@ document.getElementById("reset").onclick = function() {
 };
 
 document.getElementById("rescale").onclick = rescaleSize;
+
+rescaleSize();
