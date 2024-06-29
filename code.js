@@ -48,6 +48,7 @@ function colorChange() {
 
 function colorReset(element) {
     element.style.backgroundColor = "white";
+    element.style.opacity = 1;
 }
 
 function rescaleSize() {
@@ -59,7 +60,11 @@ function rescaleSize() {
     else {
         size = window.prompt("Give a size: ");
     }
-    if (size <= 100){
+    if (size == 0) {
+        alert("Give a size that is not zero!");
+        rescaleSize();
+    }
+    else if (size <= 100){
         for (let i = 0; i < elements.length; i++) {
             elements[i].remove();
         }
@@ -86,7 +91,8 @@ function rescaleSize() {
         }
     }
     else {
-        size = window.prompt("Give a smaller size: ");
+        alert("Give a smaller size!");
+        rescaleSize();
     }
 }
 
@@ -96,7 +102,7 @@ for (let i = 0; i < elements.length; i++){
 
 document.getElementById("reset").onclick = function() {
     for (let i = 0; i < elements.length; i++){
-        colorReset(elements[i])
+        colorReset(elements[i]);
     }
 };
 
